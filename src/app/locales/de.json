@@ -1,7 +1,21 @@
 {
-  "banner": {
-    "title": "Portal der Indie-Spiele von Yandex Practicum-Studenten",
-    "text": "Kursteilnehmer entwickeln ihre Spiele auf Unity, hier veröffentlichen wir sie. Sie können direkt auf der Website spielen. Und wenn Sie ein Benutzerkonto haben - erhalten Sie die Möglichkeit, für Spiele zu stimmen.",
-    "button": "Spiele ansehen"
-  }
+  "bannerTitle": "Portal von Indie-Spielen von Yandex Practicum-Studenten",
+  "bannerText": "Die Kursteilnehmer entwickeln ihre Spiele auf Unity, hier veröffentlichen wir sie. Sie können direkt auf der Website spielen. Und wenn Sie ein Benutzerkonto haben — haben Sie die Möglichkeit, für Spiele zu stimmen.",
+  "bannerLink": "Spiele anzeigen",
+  "bannerAltText": "Hand in gelbem Hintergrund versunken",
+  "authorPrefix": "Autor: ",
+  "votesPrefix": "Stimmen auf der Website: ",
+  "gameLink": "/game-id",
+  "promoTitle": "Dein Aktionscode",
+  "promoDescription": "Rabatt auf alle Yandex Practicum-Kurse für Benutzer unserer Website!",
+  "promoButton": "Code erhalten",
+  "promoAltText": "Hund",
+  "navNew": "Neuheiten",
+  "navPopular": "Beliebt",
+  "navShooters": "Shooter",
+  "navRunners": "Läufer",
+  "navPixel": "Pixel",
+  "navTDS": "TDS",
+  "footerLogoName": "pindie",
+  "footerLogoCopy": ", 21. Jahrhundert"
 }

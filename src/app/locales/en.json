@@ -1,7 +1,21 @@
 {
-  "banner": {
-    "title": "Portal of indie games from Yandex Practicum students",
-    "text": "Students of courses develop their games on Unity, here we publish them. You can play directly on the site. And if you have a user account - you get the opportunity to vote for games.",
-    "button": "Watch games"
-  }
+  "bannerTitle": "Portal of indie games from Yandex Practicum students",
+  "bannerText": "Students of the courses develop their games on Unity, here we publish them. You can play right on the website. And if you have a user account — you get the opportunity to vote for games.",
+  "bannerLink": "View games",
+  "bannerAltText": "Hand submerged in yellow background",
+  "authorPrefix": "Author: ",
+  "votesPrefix": "Votes on site: ",
+  "gameLink": "/game-id",
+  "promoTitle": "Your Promo Code",
+  "promoDescription": "Discount on all Yandex Practicum courses for users of our website!",
+  "promoButton": "Get Code",
+  "promoAltText": "Dog",
+  "navNew": "New",
+  "navPopular": "Popular",
+  "navShooters": "Shooters",
+  "navRunners": "Runners",
+  "navPixel": "Pixel",
+  "navTDS": "TDS",
+  "footerLogoName": "pindie",
+  "footerLogoCopy": ", 21st century"
 }
