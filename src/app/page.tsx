@@ -57,7 +57,6 @@ const newGames = [
     },
 ];
 
-
 export default function Home() {
   return (
       <main className="main">
