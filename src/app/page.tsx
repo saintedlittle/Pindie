@@ -61,7 +61,6 @@ export default function Home() {
   return (
       <main className="main">
         <Banner />
-        {/* Import popularGames and newGames here */}
         <GamesList title="Популярное" games={popularGames} />
         <GamesList title="Новинки" games={newGames} />
         <Promo />
