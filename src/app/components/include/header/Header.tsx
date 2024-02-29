@@ -1,6 +1,9 @@
-import React from 'react';
+"use client"
+import React, {useState} from 'react';
 
 import './Header.css';
+import Popup from "@/app/components/popup/Popup";
+import AuthForm from "@/app/components/auth/AuthForm";
 
 const Header = () => {
     return (
@@ -49,11 +52,25 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text }) => {
 };
 
 const Authentication = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const handleLoginButtonClick = () => {
+        setIsPopupOpen(true);
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+
     return (
         <div className="auth">
-            <button className="auth__button">Войти</button>
+            <button className="auth__button" onClick={handleLoginButtonClick}>Войти</button>
+            {isPopupOpen && (
+                <Popup onClose={handleClosePopup} isOpen={true}>
+                    <AuthForm />
+                </Popup>
+            )}
         </div>
     );
 };
-
 export default Header;
