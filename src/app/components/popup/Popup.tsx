@@ -4,6 +4,8 @@ import './Popup.css';
 
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Container from "@/app/components/ui/div/Container";
+import Button from "@/app/components/ui/button/Button";
 
 interface PopupProps {
     isOpen: boolean;
@@ -33,12 +35,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, children }) => {
     return ReactDOM.createPortal(
         <>
             <div className="overlay" onClick={handleClose}></div>
-            <div className="popup">
-                <button className="close-button" onClick={handleClose}>
+            <Container className={"popup"}>
+                <Button className={"close-button"} onClick={handleClose}>
                     <FontAwesomeIcon icon={faTimes} />
-                </button>
-                <div className="popup-content">{children}</div>
-            </div>
+                </Button>
+                <Container className={"popup-content"}>{children}</Container>
+            </Container>
         </>,
         document.getElementById('popup-root')!
     );

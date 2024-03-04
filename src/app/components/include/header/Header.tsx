@@ -4,6 +4,11 @@ import React, {useState} from 'react';
 import './Header.css';
 import Popup from "@/app/components/popup/Popup";
 import AuthForm from "@/app/components/auth/AuthForm";
+import {useRouter} from "next/navigation";
+import {Anchor} from "@/app/components/ui/a/Anchor";
+import Image from "@/app/components/ui/img/Image";
+import Button from "@/app/components/ui/button/Button";
+import Container from "@/app/components/ui/div/Container";
 
 const Header = () => {
     return (
@@ -15,10 +20,17 @@ const Header = () => {
 };
 
 const Logo = () => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        // Перенаправляем на главную страницу "/"
+        router.push('/');
+    };
+
     return (
-        <a href="#" className="logo">
-            <img className="logo__image" src="/images/logo.svg" alt="Логотип Pindie" />
-        </a>
+        <Anchor href={"#"} className={"logo"} onClick={handleClick}>
+            <Image className={"logo__image"} src={"/images/logo.svg"} alt={"Логотип Pindie"} />
+        </Anchor>
     );
 };
 
@@ -46,7 +58,7 @@ interface MenuItemProps {
 const MenuItem: React.FC<MenuItemProps> = ({ link, text }) => {
     return (
         <li className="menu__item">
-            <a href={link} className="menu__link">{text}</a>
+            <Anchor href={link} className={"menu__link"}>{text}</Anchor>
         </li>
     );
 };
@@ -63,14 +75,16 @@ const Authentication = () => {
     };
 
     return (
-        <div className="auth">
-            <button className="auth__button" onClick={handleLoginButtonClick}>Войти</button>
+        <Container className={"auth"}>
+            <Button className={"auth__button"} onClick={handleLoginButtonClick}>Войти</Button>
             {isPopupOpen && (
                 <Popup onClose={handleClosePopup} isOpen={true}>
-                    <AuthForm />
+                    <div style={{margin: '32px auto', maxWidth: '768px', padding: '32px'}}>
+                        <AuthForm />
+                    </div>
                 </Popup>
             )}
-        </div>
+        </Container>
     );
 };
 export default Header;

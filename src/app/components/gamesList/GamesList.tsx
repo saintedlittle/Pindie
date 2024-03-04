@@ -2,6 +2,8 @@ import React from 'react';
 import GameCard from '@/app/components/gameCard/GameCard';
 
 import './GamesList.css';
+import Section from "@/app/components/ui/section/Section";
+import Title from "@/app/components/ui/title/Title";
 
 interface Game {
     title: string;
@@ -18,10 +20,10 @@ interface GamesListProps {
 
 const GamesList: React.FC<GamesListProps> = ({ title, games }) => {
     return (
-        <section className="list-section">
-            <h2 className="list-section__title" id={title.toLowerCase()}>
+        <Section className={"list-section"}>
+            <Title level={2} className={"list-section__title"} id={title.toLowerCase()}>
                 {title}
-            </h2>
+            </Title>
             <ul className="cards-list">
                 {games.map((game, index) => (
                     <GameCard
@@ -34,7 +36,7 @@ const GamesList: React.FC<GamesListProps> = ({ title, games }) => {
                     />
                 ))}
             </ul>
-        </section>
+        </Section>
     );
 };
 

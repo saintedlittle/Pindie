@@ -1,5 +1,11 @@
 import React from 'react';
 import './GameCard.css';
+import Container from "@/app/components/ui/div/Container";
+import Title from "@/app/components/ui/title/Title";
+import {Paragraph} from "@/app/components/ui/p/Paragraph";
+import Span from "@/app/components/ui/span/Span";
+import Image from "@/app/components/ui/img/Image";
+import {Anchor} from "@/app/components/ui/a/Anchor";
 
 interface GameCardProps {
     title: string;
@@ -10,31 +16,31 @@ interface GameCardProps {
 }
 
 const GameCardImage: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
-    return <img src={imageUrl} alt="" className="card__image" />;
+    return <Image src={imageUrl} alt={""} className={"card__image"} />;
 };
 
 const GameCardInfo: React.FC<{ title: string; description: string; author: string; votes: number }> = ({title, description, author, votes}) => {
     return (
-        <div className="card__content-block">
-            <h3 className="card__title">{title}</h3>
-            <p className="card__description">{description}</p>
-            <div className="card__info-container">
-                <p className="card__author">
+        <Container className={"card__content-block"}>
+            <Title level={3} className={"card__title"}>{title}</Title>
+            <Paragraph className={"card__description"}>{description}</Paragraph>
+            <Container className={"card__info-container"}>
+                <Paragraph className={"card__author"}>
                     Автор: <span className="card__accent">{author}</span>
-                </p>
-                <p className="card__votes">
-                    Голосов на сайте: <span className="card__accent">{votes}</span>
-                </p>
-            </div>
-        </div>
+                </Paragraph>
+                <Paragraph className={"card__votes"}>
+                    Голосов на сайте: <Span className={"card__accent"}>{votes}</Span>
+                </Paragraph>
+            </Container>
+        </Container>
     );
 };
 
 const GameCardLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => {
     return (
-        <a href={href} className="card-list__link">
+        <Anchor href={href} className={"card-list__link"}>
             {children}
-        </a>
+        </Anchor>
     );
 };
 

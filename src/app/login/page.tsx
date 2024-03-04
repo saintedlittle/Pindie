@@ -6,7 +6,9 @@ export default function Page(): React.JSX.Element {
 
     return (
         <main className="main">
-            <AuthForm />
+            <div style={{margin: '64px auto', maxWidth: '768px', padding: '64px', border: '4px solid black'}}>
+                <AuthForm />
+            </div>
         </main>
     );
 }
