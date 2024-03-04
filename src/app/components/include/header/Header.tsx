@@ -76,7 +76,7 @@ const Authentication = () => {
 
     return (
         <Container className={"auth"}>
-            <Button className={"auth__button"} onClick={handleLoginButtonClick}>Войти</Button>
+            <button className={"auth__button"} onClick={handleLoginButtonClick}>Войти</button>
             {isPopupOpen && (
                 <Popup onClose={handleClosePopup} isOpen={true}>
                     <div style={{margin: '32px auto', maxWidth: '768px', padding: '32px'}}>
