@@ -1,7 +1,6 @@
 "use client"
-import React, {useState} from 'react';
+import React from 'react';
 import { Typography, Container } from '@mui/material';
-import Popup from "@/app/components/popup/Popup";
 
 interface ErrorPageProps {
     errorMessage: string;
@@ -14,7 +13,10 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ errorMessage }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                margin: '20px auto',
+                maxWidth: '768px',
+                padding: '20px',
             }}
         >
             <Typography variant="h4" gutterBottom>
