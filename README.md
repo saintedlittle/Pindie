@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Инди-игры от студентов Яндекс Практикума
 
-## Getting Started
+## Как начать
 
-First, run the development server:
+1. Установите [Node.js](https://nodejs.org/).
+2. Клонируйте репозиторий: `git clone https://github.com/RuwTheRipper/Pindie`.
+3. Перейдите в каталог проекта: `cd Pindie`.
+4. Установите зависимости: `npm install`.
+5. Запустите проект: `npm start`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Технологии
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Этот проект создан с использованием следующих технологий:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js
+- Next.js
+- React.js
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Как внести свой вклад
 
-## Learn More
+Если вы хотите внести свой вклад в развитие проекта, вы можете сделать это, создавая новые функции, исправляя ошибки или улучшая существующий код. Просто создайте ветку, внесите необходимые изменения и отправьте запрос на слияние.
 
-To learn more about Next.js, take a look at the following resources:
+## Лицензия
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Этот проект лицензирован по лицензии [MIT](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Дополнительная информация
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Для получения дополнительной информации или помощи свяжитесь с нами по электронной почте: [secatrop@gmail.com](mailto:secatrop@gmail.com).

@@ -1,69 +1,98 @@
-import Promo from "@/app/components/promo/Promo";
+"use client";
+import React, { useState, useEffect } from 'react';
 import Banner from "@/app/components/banner/Banner";
 import GamesList from "@/app/components/gamesList/GamesList";
+import Popup from "@/app/components/popup/Popup";
+import ErrorPage from "@/app/components/error/ErrorPage";
+import Promo from "@/app/components/promo/Promo";
+import Container from "@/app/components/ui/div/Container";
 
-const popularGames = [
-    {
-        title: "Crystal Kepper",
-        description: "Управляй боевым дроном, чтобы любой ценой защитить кристалл от враждебных космо-слизней.",
-        author: "Lonely Baobab",
-        votes: 20,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/cristal-keeper/cover.png",
-    },
-    {
-        title: "Dangeons'n'Caves. Prologue",
-        description: "Безымянный герой исследует пещеры и подземелья, чтобы найти больше информации о себе.",
-        author: "F-Style",
-        votes: 10,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/dangeons-n-caves-prologue/cover.png",
-    },
-    {
-        title: "Defence of Crystal",
-        description: "Защищай магический кристалл от монстров и уничтожай кладбища, чтобы спасти Землю, которую поглотил мрак.",
-        author: "MastWe",
-        votes: 20,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/defence-of-crystal/cover.png",
-    },
-];
+const API_URL: string = 'http://localhost:4000'; // Замените на ваш URL API
 
-const newGames = [
-    {
-        title: "Go Away",
-        description: "Управляй автомобилем, избегая аварий и перепрыгивая препятствия на пути к следующему уровню.",
-        author: "Mahisto",
-        votes: 20,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/go-away/cover.jpg",
-    },
-    {
-        title: "G.U.N.N.E.R.",
-        description: "Продержись как можно дольше, отбиваясь от врагов, которых будет становиться всё больше.",
-        author: "IDKWIAm",
-        votes: 10,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/gunner/cover.png",
-    },
-    {
-        title: "Space Terror",
-        description: "Лети как можно дальше в космическом пространстве, уничтожая всё на своём пути.",
-        author: "IDKWIAm",
-        votes: 20,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/space-terror/cover.png",
-    },
-    {
-        title: "Square Slayer",
-        description: "Уворачивайся и отстреливайся от озлобленных квадратов и собирай жизни для перехода на следующий уровень.",
-        author: "niclan",
-        votes: 10,
-        imageUrl: "https://code.s3.yandex.net/teens/pindie-games/square-slayer/cover.png",
-    },
-];
-
-export default function Home() {
-  return (
-      <main className="main">
-        <Banner />
-        <GamesList title="Популярное" games={popularGames} />
-        <GamesList title="Новинки" games={newGames} />
-        <Promo />
-      </main>
-  );
+interface Game {
+    title: string;
+    description: string;
+    author: string;
+    votes: number;
+    imageUrl: string;
 }
+
+interface HomeProps {
+    popularGames: Game[];
+    newGames: Game[];
+    error: boolean;
+    errorMessage: string;
+}
+
+const Home: React.FC<HomeProps> = ({ popularGames, newGames, error, errorMessage }) => {
+    return (
+        <main className="main">
+            <Banner />
+            <Container id={"popup-root"}></Container>
+            {error ? (
+                <Popup isOpen={true}><ErrorPage errorMessage={errorMessage} /></Popup> // Используем ErrorPage вместо Alert
+            ) : (
+                <>
+                    <GamesList title="Популярное" games={popularGames} />
+                    <GamesList title="Новинки" games={newGames} />
+                    <Promo />
+                </>
+            )}
+        </main>
+    );
+}
+
+const useGameData = () => {
+    const [popularGames, setPopularGames] = useState<Game[]>([]);
+    const [newGames, setNewGames] = useState<Game[]>([]);
+    const [error, setError] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
+    useEffect(() => {
+        const fetchPopularGames = async (): Promise<void> => {
+            try {
+                const response = await fetch(`${API_URL}/api/getPopularGames`);
+                if (!response.ok) {
+                    setError(true);
+                    setErrorMessage('Failed to fetch popular games!');
+                    return;
+                }
+                const data: Game[] = await response.json();
+                setPopularGames(data);
+            } catch (error) {
+                console.error(error);
+                setError(true);
+                setErrorMessage('An error occurred while fetching popular games!');
+            }
+        };
+
+        const fetchNewGames = async (): Promise<void> => {
+            try {
+                const response = await fetch(`${API_URL}/api/getNewGames`);
+                if (!response.ok) {
+                    setError(true);
+                    setErrorMessage('Failed to fetch new games!');
+                    return;
+                }
+                const data: Game[] = await response.json();
+                setNewGames(data);
+            } catch (error) {
+                console.error(error);
+                setError(true);
+                setErrorMessage('An error occurred while fetching new games!');
+            }
+        };
+
+        fetchPopularGames().then(r => console.log(r));
+        fetchNewGames().then(r => console.log(r));
+    }, []);
+
+    return { popularGames, newGames, error, errorMessage };
+};
+
+const HomePage: React.FC = () => {
+    const { popularGames, newGames, error, errorMessage } = useGameData();
+    return <Home popularGames={popularGames} newGames={newGames} error={error} errorMessage={errorMessage} />;
+};
+
+export default HomePage;

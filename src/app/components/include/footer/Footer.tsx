@@ -1,6 +1,10 @@
+"use client"
 import React from 'react';
 
 import './Footer.css';
+import {Anchor} from "@/app/components/ui/a/Anchor";
+import Span from "@/app/components/ui/span/Span";
+import {useRouter} from "next/navigation";
 
 const Footer = () => {
     return (
@@ -12,11 +16,18 @@ const Footer = () => {
 };
 
 const Logo = () => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        // Перенаправляем на главную страницу "/"
+        router.push('/');
+    };
+
     return (
-        <a href="#" className="footer__logo">
-            <span className="footer__logo-name">pindie</span>
-            <span className="footer__logo-copy">, XXI век</span>
-        </a>
+        <Anchor href={"#"} className={"footer__logo"} onClick={handleClick}>
+            <Span className={"footer__logo-name"}>pindie</Span>
+            <Span className={"footer__logo-copy"}>, XXI век</Span>
+        </Anchor>
     );
 };
 
@@ -38,7 +49,7 @@ interface SocialItemProps {
 const SocialItem: React.FC<SocialItemProps> = ({ link, text }) => {
     return (
         <li className="social-list__item">
-            <a href={link} className="button social-list__link">{text}</a>
+            <Anchor href={link} className={"button social-list__link"}>{text}</Anchor>
         </li>
     );
 };
